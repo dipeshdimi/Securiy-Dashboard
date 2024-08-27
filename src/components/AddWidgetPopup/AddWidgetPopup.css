@@ -1,0 +1,258 @@
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  z-index: 1000;
+}
+
+.popup-content {
+  width: 50%;
+  height: 100%;
+  background-color: #ffffff;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  border-radius: 8px 0 0 8px;
+  display: flex;
+  flex-direction: column;
+  animation: slideIn 0.5s ease-out forwards;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.popup-content h2 {
+  font-size: 1.6rem;
+  padding: 1.5% 2%;
+  color: #fff;
+  font-weight: 700;
+  background-color: rgb(13, 37, 108);
+}
+
+.personalize-widget {
+  padding: 0 2% 2% 2%;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  overflow: auto;
+}
+
+.instruction {
+  margin: 3% 0;
+}
+
+.input-group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.input-group input {
+  flex: 1;
+  padding: 12px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  margin-right: 10px;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.input-group input:focus {
+  border-color: rgb(13, 37, 108);
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  outline: none;
+}
+
+.widget-name {
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 12px;
+  margin-bottom: 20px;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.widget-name:focus {
+  border-color: rgb(13, 37, 108);
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  outline: none;
+}
+
+.tabs {
+  display: flex;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #ddd;
+}
+
+.tab-button {
+  padding: 1% 4%;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  color: #666;
+  font-weight: bold;
+  cursor: pointer;
+  text-align: center;
+  font-size: 1rem;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.tab-button.active {
+  border-bottom: 1px solid rgb(13, 37, 108);
+  font-weight: 700;
+  color: rgb(13, 37, 108);
+}
+
+.tab-button:not(.active):hover {
+  background-color: #e0e0e0;
+}
+
+.form-section {
+  margin-bottom: 25px;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 15px;
+  padding: 20px;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+.form-section h3 {
+  margin-bottom: 20px;
+  font-size: 1.3rem;
+  color: #333;
+  font-weight: 600;
+}
+
+.input-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.file-upload-button {
+  display: flex;
+  align-items: center;
+  padding: 1.1% 2%;
+  font-size: 1rem;
+  color: #fff;
+  background-color: rgb(13, 37, 108);
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s, box-shadow 0.3s;
+  position: relative;
+}
+
+.file-upload-button:hover {
+  background-color: rgb(35, 69, 173);
+}
+
+.plus-symbol {
+  font-size: 1.5rem;
+}
+
+.file-upload-input {
+  display: none;
+}
+
+.text-content-input {
+  flex: 1;
+  padding: 12px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background-color: #fff;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.text-content-input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  outline: none;
+}
+
+
+.add-button {
+  padding: 10px 15px;
+  font-size: 1rem;
+  border: none;
+  background-color: #28a745;
+  color: #fff;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.add-button:hover {
+  background-color: #218838;
+  transform: scale(1.05);
+}
+
+.remove-button {
+  padding: 8px 12px;
+  font-size: 1rem;
+  border: none;
+  background-color: #ff4d4d;
+  color: #fff;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.remove-button:hover {
+  background-color: #cc0000;
+  transform: scale(1.05);
+}
+
+.popup-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 2%;
+  margin-top: auto;
+}
+
+.cancel-button {
+  padding: 1% 2%;
+  font-size: 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  border: 1px solid rgb(13, 37, 108);
+  background-color: transparent;
+  color: rgb(13, 37, 108);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.cancel-button:hover {
+  background-color: #ddd;
+  border: none;
+  color: #333;
+}
+
+.confirm-button {
+  padding: 1% 2%;
+  font-size: 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  border: none;
+  background-color: rgb(13, 37, 108);
+  color: #fff;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.confirm-button:hover {
+  background-color: rgb(9, 51, 180)
+}
