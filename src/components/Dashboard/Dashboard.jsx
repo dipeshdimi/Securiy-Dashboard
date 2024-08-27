@@ -1,13 +1,14 @@
 import { useState } from 'react';
 import { Pie, Bar } from 'react-chartjs-2';
 import { Chart as ChartJS, Title, Tooltip, Legend, ArcElement, BarElement, CategoryScale, LinearScale } from 'chart.js';
+import PropTypes from 'prop-types';
 import initialData from '../../data';
 import './Dashboard.css';
 import AddWidgetPopup from '../AddWidgetPopup/AddWidgetPopup';
 
 ChartJS.register(Title, Tooltip, Legend, ArcElement, BarElement, CategoryScale, LinearScale);
 
-function Dashboard() {
+function Dashboard({ searchQuery }) {
   const [data, setData] = useState(initialData);
   const [showPopup, setShowPopup] = useState(false);
   const [currentCategory, setCurrentCategory] = useState(null);
@@ -42,10 +43,10 @@ function Dashboard() {
   };
 
   const renderWidgetContent = (widget, chartType) => {
-    if (widget.imageUrl && widget.textContent) { // CWPP Dashboard
+    if (widget.imageUrl && widget.textContent) {
       return (
         <div className='cwpp'>
-          <img src={widget.imageUrl} alt="Widget Image" />
+          <img src={widget.imageUrl} alt="Widget" />
           <p>{widget.textContent}</p>
         </div>
       );
@@ -71,20 +72,20 @@ function Dashboard() {
             stacked: true,
             beginAtZero: true,
             grid: {
-              display: false, // Remove x-axis grid lines
+              display: false,
             },
             ticks: {
-              display: false, // Hide x-axis labels
+              display: false,
             },
           },
           y: {
             stacked: true,
-            display: false, // Hide y-axis labels
+            display: false,
             grid: {
-              display: false, // Remove y-axis grid lines
+              display: false,
             },
             ticks: {
-              display: false, // Hide y-axis labels
+              display: false,
             },
           },
         },
@@ -116,43 +117,18 @@ function Dashboard() {
             <div className='bar-chart-container'>
               <Bar
                 data={{
-                  labels: [''], // Empty label since we only want one bar
+                  labels: [''],
                   datasets: widget.labels.map((label, index) => ({
                     label,
                     data: [widget.chartData[index]],
                     backgroundColor: `hsl(${index * 360 / widget.labels.length}, 80%, 50%)`,
-                    barThickness: 10, // Thin bars to resemble a line
+                    barThickness: 10,
                   })),
                 }}
                 options={{
                   ...chartOptions,
-                  indexAxis: 'y', // Horizontal bar
-                  plugins: {
-                    ...chartOptions.plugins,
-                    legend: {
-                      display: false, // Hide the legend for bar chart
-                    },
-                  },
-                  scales: {
-                    x: {
-                      ...chartOptions.scales.x,
-                      grid: {
-                        display: false, // Remove x-axis grid lines
-                      },
-                      ticks: {
-                        display: false, // Hide x-axis labels
-                      },
-                    },
-                    y: {
-                      ...chartOptions.scales.y,
-                      grid: {
-                        display: false, // Remove y-axis grid lines
-                      },
-                      ticks: {
-                        display: true, // Show y-axis labels
-                      },
-                    },
-                  },
+                  indexAxis: 'y',
+                  maintainAspectRatio: false,
                 }}
               />
             </div>
@@ -170,16 +146,25 @@ function Dashboard() {
     );
   };
 
+  const filteredData = data.map(category => ({
+    ...category,
+    widgets: category.widgets.filter(widget =>
+      widget.name.toLowerCase().includes(searchQuery.toLowerCase())
+    ),
+  }));
+
   return (
     <div className="dashboard">
-      {data.map(category => (
+      <h1>CNAPP Dashboard</h1>
+      {filteredData.map(category => (
         <div key={category.id} className="category">
+          <h2>{category.category}</h2>
           <div className="widgets">
             {category.widgets.map(widget => (
               <div key={widget.id} className="widget">
                 <div className="widget-header">
                   <h3>{widget.name}</h3>
-                  <button onClick={() => handleRemoveWidget(category.id, widget.id)}>×</button>
+                  <button onClick={() => handleRemoveWidget(category.id, widget.id)}>X</button>
                 </div>
                 <div className={category.chartType === 'Donut Chart' ? 'pie-legend-container' : 'bar-legend-container'}>
                   {renderWidgetContent(widget, category.chartType)}
@@ -233,5 +218,9 @@ function Dashboard() {
     </div>
   );
 }
+
+Dashboard.propTypes = {
+  searchQuery: PropTypes.string.isRequired,
+};
 
 export default Dashboard;

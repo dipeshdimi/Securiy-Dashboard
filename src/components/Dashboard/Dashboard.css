@@ -1,4 +1,3 @@
-/* Dashboard.css */
 body {
   font-family: "Roboto", sans-serif;
   background-color: #f4f6f8;
@@ -8,6 +7,10 @@ body {
 
 .dashboard {
   padding: 20px 30px;
+}
+
+.dashboard h1 {
+  margin-bottom: 1%;
 }
 
 .category {
@@ -35,7 +38,7 @@ body {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
-  min-width: 30%;
+  width: 30vw;
 }
 
 .widget-header {
@@ -47,16 +50,15 @@ body {
   color: #444;
 }
 
-.widget-header h4 {
+.widget-header h3 {
   margin: 0;
-  font-size: 1rem;
 }
 
 .widget-header button {
-  background: none;
   border: none;
-  color: #999;
-  font-size: 1.2rem;
+  background-color: transparent;
+  padding: 1%;
+  font-weight: bolder;
   cursor: pointer;
 }
 
@@ -77,9 +79,10 @@ body {
   font-size: 1rem;
   color: #919191;
   font-weight: bold;
-  width: fit-content;
+  min-width: 15vw;
   cursor: pointer;
   margin: auto;
+  
 }
 
 .add-widget:hover {
@@ -92,13 +95,6 @@ body {
   flex-direction: column;
   align-items: center;
   gap: 5%;
-}
-
-.pie-chart-container {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
 }
 
 .pie-chart-legend {
@@ -120,15 +116,12 @@ body {
 
 .bar-chart-container {
   position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  width: 28vw;
 }
 
 .bar-chart-legend {
   display: flex;
   flex-wrap: wrap;
-  flex: 0 1 30%;
 }
 
 .bar-chart-legend-item {
@@ -144,10 +137,10 @@ body {
 }
 
 .bar-chart-legend-item {
-  flex: 1 0 calc(50% - 10px); /* Adjust width to fit two items per row, subtract gap */
+  flex: 1 0 calc(50% - 10px);
   box-sizing: border-box;
   display: flex;
-  align-items: center; /* Center items vertically */
+  align-items: center;
 }
 
 .legend-color-box {
@@ -157,7 +150,6 @@ body {
   margin-right: 10px;
 }
 
-
 .cwpp {
   display: flex;
   flex-direction: column;
@@ -166,5 +158,4 @@ body {
 
 .cwpp img {
   width: 100%;
-
 }

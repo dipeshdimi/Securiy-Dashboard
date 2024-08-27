@@ -11,7 +11,7 @@ function AddWidgetPopup({ currentCategory, onAddWidget, onClose }) {
   const [categories] = useState([
     { id: 1, name: 'CSPM' },
     { id: 2, name: 'CWPP' },
-    { id: 3, name: 'Registry' }
+    { id: 3, name: 'Image' }
   ]);
 
   const handleAdd = () => {
